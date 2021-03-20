@@ -1,0 +1,36 @@
+{
+  "version": "2",
+  "templates": [
+    {
+      "type": 1,
+      "title": "Postgres DB",
+      "description": "Single database container",
+      "image": "postgres:12",
+      "name": "pg",
+      "env": [
+        {
+          "name": "POSTGRES_USER",
+          "label": "Root postgres user",
+          "default": "postgres"
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "label": "Root user's password",
+          "default": "postgres"
+        },
+        {
+          "name": "POSTGRES_DB",
+          "label": "Database name"
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data"
+        }
+      ],
+      "ports": ["5432/tcp"],
+      "restart_policy": "always",
+      "categories": ["storage"]
+    }
+  ]
+}
